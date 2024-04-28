@@ -4,6 +4,9 @@ import clsx from 'clsx';
 import * as React from 'react';
 import 'intersection-observer';
 
+/**
+ * @type {{xl: string, md: string, sm: string, lg: string, full: string}}
+ */
 const sizes = {
   sm: 'max-w-md',
   md: 'max-w-xl',
@@ -12,23 +15,26 @@ const sizes = {
   full: 'max-w-full',
 };
 
-export type DrawerProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-  renderFooter: () => React.ReactNode;
-  size?: keyof typeof sizes;
-};
 
-export const Drawer = ({
+/**
+ * @typedef {Object} DrawerProps
+ * @property {boolean} isOpen
+ * @property {() => void} onClose
+ * @property {string} title
+ * @property {React.ReactNode} children
+ * @property {() => React.ReactNode} renderFooter
+ * @property {keyof typeof sizes} [size]
+ */
+
+
+export const Drawer = (/** @type {DrawerProps} */{
   title,
   children,
   isOpen,
   onClose,
   renderFooter,
   size = 'md',
-}: DrawerProps) => {
+}) => {
   return (
     <Transition.Root show={isOpen} as={React.Fragment}>
       <Dialog

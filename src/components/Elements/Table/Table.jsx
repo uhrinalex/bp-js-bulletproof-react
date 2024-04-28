@@ -1,18 +1,38 @@
 import { ArchiveIcon } from '@heroicons/react/outline';
 import * as React from 'react';
 
-type TableColumn<Entry> = {
-  title: string;
-  field: keyof Entry;
-  Cell?({ entry }: { entry: Entry }): React.ReactElement;
-};
+/**
+ * @template A
+ * @param {A} val
+ * @returns {Promise<A>}
+ */
+function selfResolved(val) {
+  return Promise.resolve(val)
+}
 
-export type TableProps<Entry> = {
-  data: Entry[];
-  columns: TableColumn<Entry>[];
-};
+/**
+ * @typedef {Object} TableProps
+ * @property {Entry[]} data
+ * @property {TableColumn<Entry>[]} columns
+ * @template Entry
+ */
 
-export const Table = <Entry extends { id: string }>({ data, columns }: TableProps<Entry>) => {
+/**
+ * @template Entry
+ * @typedef {Object} TableColumn
+ * @property {string} title
+ * @property {keyof Entry} field
+ * @property {({ entry: Entry }) => React.ReactElement} [Cell]
+ */
+
+
+
+/**
+ * @param {TableProps<Entry>} props
+ * @returns {React.ReactElement}
+ * @template Entry
+ */
+export const Table = ({ data, columns }) => {
   if (!data?.length) {
     return (
       <div className="flex flex-col items-center justify-center text-gray-500 bg-white h-80">

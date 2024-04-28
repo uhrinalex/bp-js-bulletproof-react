@@ -5,16 +5,29 @@ import { Button } from '@/components/Elements/Button';
 import { Dialog, DialogTitle } from '@/components/Elements/Dialog/index.js';
 import { useDisclosure } from '@/hooks/useDisclosure';
 
-export type ConfirmationDialogProps = {
-  triggerButton: React.ReactElement;
-  confirmButton: React.ReactElement;
-  title: string;
-  body?: string;
-  cancelButtonText?: string;
-  icon?: 'danger' | 'info';
-  isDone?: boolean;
-};
+/**
+ * Variants for button styling.
+ * @typedef {Object} ConfirmationDialogProps
+ * @property {React.ReactElement} triggerButton
+ * @property {React.ReactElement} confirmButton
+ * @property {string} title
+ * @property {string} [body]
+ * @property {string} [cancelButtonText]
+ * @property {'danger' | 'info'} [icon]
+ * @property {boolean} [isDone]
+ */
 
+// export type ConfirmationDialogProps = {
+//   triggerButton: React.ReactElement;
+//   confirmButton: React.ReactElement;
+//   title: string;
+//   body?: string;
+//   cancelButtonText?: string;
+//   icon?: 'danger' | 'info';
+//   isDone?: boolean;
+// };
+
+/** @param props {ConfirmationDialogProps} */
 export const ConfirmationDialog = ({
   triggerButton,
   confirmButton,
@@ -23,7 +36,7 @@ export const ConfirmationDialog = ({
   cancelButtonText = 'Cancel',
   icon = 'danger',
   isDone = false,
-}: ConfirmationDialogProps) => {
+}) => {
   const { close, open, isOpen } = useDisclosure();
 
   const cancelButtonRef = React.useRef(null);

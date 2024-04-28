@@ -1,8 +1,7 @@
-import { Meta, Story } from '@storybook/react';
-
 import { Table, TableProps } from './Table.jsx';
 
-const meta: Meta = {
+/** @type {Meta} */
+const meta = {
   title: 'Components/Elements/Table',
   component: Table,
   parameters: {
@@ -12,15 +11,17 @@ const meta: Meta = {
 
 export default meta;
 
-type User = {
-  id: string;
-  name: string;
-  title: string;
-  role: string;
-  email: string;
-};
+/**
+ * @typedef {Object} User
+ * @property {string} id
+ * @property {string} name
+ * @property {string} title
+ * @property {string} role
+ * @property {string} email
+ */
 
-const data: User[] = [
+/** @type {User[]} */
+const data = [
   {
     id: '1',
     name: 'Jane Cooper',
@@ -37,7 +38,11 @@ const data: User[] = [
   },
 ];
 
-const Template: Story<TableProps<User>> = (props) => <Table<User> {...props} />;
+
+/**
+ * @param {TableProps}
+ * @type {Story<TableProps<User>>} */
+const Template = (props) => <Table<User> {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {

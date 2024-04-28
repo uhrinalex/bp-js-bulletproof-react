@@ -1,6 +1,6 @@
 import { Spinner } from './Spinner';
 
-/** @type {import('@storybook/react').Meta} */
+/** @type {Meta} */
 const meta = {
   title: 'Components/Elements/Spinner',
   component: Spinner,
@@ -11,16 +11,11 @@ const meta = {
 
 export default meta;
 
-/**
- * @template {import('@storybook/addons').Args} TProps
- * @typedef {import('@storybook/react').Story<TProps>} Story
- */
-
-/** @typedef {import('./Spinner').SpinnerProps} SpinnerProps */
+/** @typedef {import('./Spinner').SpinnerProps} SpinnerPropsType */
 
 /**
- * @param props {SpinnerProps}
- * @type {Story<SpinnerProps>}
+ * @param props {SpinnerPropsType}
+ * @type {Story<SpinnerPropsType>}
 */
 const Template = (props) => <Spinner {...props} />;
 

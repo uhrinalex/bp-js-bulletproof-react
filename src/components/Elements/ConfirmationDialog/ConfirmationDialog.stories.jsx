@@ -1,10 +1,9 @@
-import { Meta, Story } from '@storybook/react';
-
 import { Button } from '../Button';
 
-import { ConfirmationDialog, ConfirmationDialogProps } from './ConfirmationDialog.jsx';
+import { ConfirmationDialog } from './ConfirmationDialog.jsx';
 
-const meta: Meta = {
+/** @type {Meta} */
+const meta = {
   title: 'Components/Elements/ConfirmationDialog',
   component: ConfirmationDialog,
   parameters: {
@@ -14,8 +13,15 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ConfirmationDialogProps> = (props) => <ConfirmationDialog {...props} />;
+/** @typedef {import('./ConfirmationDialog').ConfirmationDialogProps} ConfirmationDialogPropsType */
 
+/**
+ * @param props {ConfirmationDialogPropsType}
+ * @type {Story<ConfirmationDialogPropsType>}
+ */
+const Template = (props) => <ConfirmationDialog {...props} />;
+
+/** @type {Story<ConfirmationDialogPropsType>} */
 export const Danger = Template.bind({});
 Danger.args = {
   icon: 'danger',
@@ -25,6 +31,7 @@ Danger.args = {
   triggerButton: <Button>Open</Button>,
 };
 
+/** @type {Story<ConfirmationDialogPropsType>} */
 export const Info = Template.bind({});
 Info.args = {
   icon: 'info',

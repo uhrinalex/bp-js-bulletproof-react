@@ -1,12 +1,9 @@
-import { Meta, Story } from '@storybook/react';
-
 import { useDisclosure } from '@/hooks/useDisclosure';
-
 import { Button } from '../Button';
-
 import { Drawer } from './Drawer.jsx';
 
-const meta: Meta = {
+/** @type {Meta} */
+const meta = {
   title: 'Components/Elements/Drawer',
   component: Drawer,
   parameters: {
@@ -16,7 +13,9 @@ const meta: Meta = {
 
 export default meta;
 
-export const Demo: Story = () => {
+// TODO try to rethink
+/** @type {nonGenericStory} */
+export const Demo= () => {
   const { close, open, isOpen } = useDisclosure();
 
   return (
