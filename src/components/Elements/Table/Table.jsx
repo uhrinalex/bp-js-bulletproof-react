@@ -1,7 +1,6 @@
 import { ArchiveIcon } from '@heroicons/react/outline';
 import * as React from 'react';
 
-
 /**
  * @template T
  * @typedef {T & { id: string }} Entry
@@ -10,23 +9,21 @@ import * as React from 'react';
 /**
  * @template Entry
  * @typedef {Object} TableProps
- * @property {Entry[]} data - Pole s dátami pre tabuľku.
- * @property {TableColumn<Entry>[]} columns - Pole s definíciami stĺpcov tabuľky.
+ * @property {Entry[]} data
+ * @property {TableColumn<Entry>[]} columns
  */
 
 /**
  * @template Entry
  * @typedef {Object} TableColumn
- * @property {string} title - Nadpis stĺpca.
- * @property {keyof Entry} field - Kľúčové slovo stĺpca.
- * @property {function({ entry: Entry }): React.ReactElement} [Cell] - Vlastná bunka stĺpca (voliteľné).
+ * @property {string} title
+ * @property {keyof Entry} field
+ * @property {function({ entry: Entry }): React.ReactElement} [Cell]
  */
 
 /**
- * Komponent Tabuľka.
- *
- * @param {TableProps<Entry>} props - Props pre komponent Tabuľka.
- * @returns {React.ReactElement} Obsah komponentu Tabuľka.
+ * @param {TableProps<Entry>} props
+ * @returns {React.ReactElement}
  * @template Entry
  */
 export const Table = ({ data, columns }) => {

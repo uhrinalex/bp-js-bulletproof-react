@@ -2,18 +2,20 @@ import { Dialog as UIDialog, Transition } from '@headlessui/react';
 import * as React from 'react';
 import 'intersection-observer';
 
-type DialogProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  initialFocus?: React.MutableRefObject<null>;
-};
+/**
+ * @typedef {Object} DialogProps
+ * @property {boolean} isOpen
+ * @property {() => void} onClose
+ * @property {React.ReactNode} children
+ * @property {React.MutableRefObject<null>} [initialFocus]
+ */
 
 export const DialogTitle = UIDialog.Title;
 
 export const DialogDescription = UIDialog.Description;
 
-export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps) => {
+/** @param {DialogProps} props */
+export const Dialog = ({ isOpen, onClose, children, initialFocus }) => {
   return (
     <>
       <Transition.Root show={isOpen} as={React.Fragment}>

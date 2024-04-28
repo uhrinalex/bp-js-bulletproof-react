@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 
 import { useDisclosure } from '@/hooks/useDisclosure';
@@ -7,7 +6,8 @@ import { Button } from '../Button';
 
 import { Dialog, DialogTitle } from './Dialog.jsx';
 
-const meta: Meta = {
+/** @type {Meta} */
+const meta = {
   title: 'Components/Elements/Dialog',
   component: Dialog,
   parameters: {
@@ -17,7 +17,8 @@ const meta: Meta = {
 
 export default meta;
 
-export const Demo: Story = () => {
+/** @type {nonGenericStory} */
+export const Demo= () => {
   const { close, open, isOpen } = useDisclosure();
   const cancelButtonRef = React.useRef(null);
 

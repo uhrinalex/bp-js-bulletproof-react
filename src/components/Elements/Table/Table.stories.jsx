@@ -1,4 +1,4 @@
-import { Table, TableProps } from './Table.jsx';
+import { Table } from './Table.jsx';
 
 /** @type {Meta} */
 const meta = {
@@ -38,13 +38,16 @@ const data = [
   },
 ];
 
+/** @typedef {import('./Table.jsx').TableProps<User>} TablePropsType */
 
 /**
- * @param {TableProps}
- * @type {Story<TableProps<User>>} */
-const Template = (props) => <Table<User> {...props} />;
+ * @param {TablePropsType} props
+ * @type {Story<TablePropsType>} */
+const Template = (props) => <Table {...props} />;
 
+/** @type {Story<TablePropsType>} */
 export const Default = Template.bind({});
+
 Default.args = {
   data,
   columns: [
