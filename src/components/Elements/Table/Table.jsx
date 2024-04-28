@@ -1,35 +1,32 @@
 import { ArchiveIcon } from '@heroicons/react/outline';
 import * as React from 'react';
 
-/**
- * @template A
- * @param {A} val
- * @returns {Promise<A>}
- */
-function selfResolved(val) {
-  return Promise.resolve(val)
-}
 
 /**
- * @typedef {Object} TableProps
- * @property {Entry[]} data
- * @property {TableColumn<Entry>[]} columns
+ * @template T
+ * @typedef {T & { id: string }} Entry
+ */
+
+/**
  * @template Entry
+ * @typedef {Object} TableProps
+ * @property {Entry[]} data - Pole s dátami pre tabuľku.
+ * @property {TableColumn<Entry>[]} columns - Pole s definíciami stĺpcov tabuľky.
  */
 
 /**
  * @template Entry
  * @typedef {Object} TableColumn
- * @property {string} title
- * @property {keyof Entry} field
- * @property {({ entry: Entry }) => React.ReactElement} [Cell]
+ * @property {string} title - Nadpis stĺpca.
+ * @property {keyof Entry} field - Kľúčové slovo stĺpca.
+ * @property {function({ entry: Entry }): React.ReactElement} [Cell] - Vlastná bunka stĺpca (voliteľné).
  */
 
-
-
 /**
- * @param {TableProps<Entry>} props
- * @returns {React.ReactElement}
+ * Komponent Tabuľka.
+ *
+ * @param {TableProps<Entry>} props - Props pre komponent Tabuľka.
+ * @returns {React.ReactElement} Obsah komponentu Tabuľka.
  * @template Entry
  */
 export const Table = ({ data, columns }) => {
