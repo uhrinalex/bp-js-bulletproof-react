@@ -14,7 +14,7 @@ const meta = {
 export default meta;
 
 // TODO try to rethink
-/** @type {nonGenericStory} */
+/** @type {NonGenericStory} */
 export const Demo= () => {
   const { close, open, isOpen } = useDisclosure();
 

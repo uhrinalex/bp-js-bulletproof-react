@@ -1,8 +1,7 @@
-import { Meta, Story } from '@storybook/react';
-
 import { Link } from './Link.jsx';
 
-const meta: Meta = {
+/** @type {Meta} */
+const meta = {
   title: 'Components/Elements/Link',
   component: Link,
   parameters: {
@@ -12,11 +11,13 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (props) => (
+/** @type {NonGenericStory} */
+const Template = (props) => (
   <Link to="/" {...props}>
     Hello
   </Link>
 );
 
+/** @type {NonGenericStory} */
 export const Default = Template.bind({});
 Default.args = {};

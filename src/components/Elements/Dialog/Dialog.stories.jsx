@@ -17,7 +17,7 @@ const meta = {
 
 export default meta;
 
-/** @type {nonGenericStory} */
+/** @type {NonGenericStory} */
 export const Demo= () => {
   const { close, open, isOpen } = useDisclosure();
   const cancelButtonRef = React.useRef(null);
