@@ -4,7 +4,7 @@ import actualCreate from 'zustand';
 // a variable to hold reset functions for all stores declared in the app
 const storeResetFns = new Set();
 
-// when creating a store, we get its initial state, create a reset function and add it in the set
+// when creating a stores, we get its initial state, create a reset function and add it in the set
 /**
  *
  * @param createState {any}

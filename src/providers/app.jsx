@@ -6,9 +6,9 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Button, Spinner } from '@/components/Elements';
-import { Notifications } from '@/components/Notifications/Notifications';
-import { AuthProvider } from '@/lib/auth';
-import { queryClient } from '@/lib/react-query';
+import { Notifications } from '@/components/Notifications/Notifications.jsx';
+import { AuthProvider } from '@/lib/auth.jsx';
+import { queryClient } from '@/lib/react-query.js';
 
 const ErrorFallback = () => {
     return (

@@ -17,16 +17,6 @@ import { useDisclosure } from '@/hooks/useDisclosure';
  * @property {boolean} [isDone]
  */
 
-// export type ConfirmationDialogProps = {
-//   triggerButton: React.ReactElement;
-//   confirmButton: React.ReactElement;
-//   title: string;
-//   body?: string;
-//   cancelButtonText?: string;
-//   icon?: 'danger' | 'info';
-//   isDone?: boolean;
-// };
-
 /** @param props {ConfirmationDialogProps} */
 export const ConfirmationDialog = ({
   triggerButton,
