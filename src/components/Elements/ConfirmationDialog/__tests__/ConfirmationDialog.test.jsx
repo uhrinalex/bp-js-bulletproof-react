@@ -1,4 +1,4 @@
-import { rtlRender, screen, userEvent, waitFor } from '@/test/test-utils';
+import { rtlRender, screen, userEvent, waitFor } from '@/test/test-utils.js';
 
 import { Button } from '../../Button';
 import { ConfirmationDialog } from '../ConfirmationDialog.jsx';

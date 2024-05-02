@@ -1,4 +1,4 @@
-import { createUser, render, screen } from '@/test/test-utils';
+import { createUser, render, screen } from '@/test/test-utils.js';
 
 import { Authorization, ROLES } from '../authorization';
 
