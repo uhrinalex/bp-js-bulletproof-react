@@ -1,6 +1,4 @@
-import { AxiosError } from 'axios';
-import { QueryClient, UseQueryOptions, UseMutationOptions } from 'react-query';
-import { PromiseValue } from 'type-fest';
+import { QueryClient } from "react-query";
 
 /** @type {DefaultOptions} */
 const queryConfig = {
@@ -11,19 +9,24 @@ const queryConfig = {
   },
 };
 
+/** @type {QueryClient} */
 export const queryClient = new QueryClient({ defaultOptions: queryConfig });
 
-export type ExtractFnReturnType<FnType extends (...args: any) => any> = PromiseValue<
-    ReturnType<FnType>
-    >;
+/**
+ * @template {(...args: any) => any} FnType
+ * @typedef {import("type-fest").PromiseValue<ReturnType<FnType>>} ExtractFnReturnType
+ */
 
-export type QueryConfig<QueryFnType extends (...args: any) => any> = Omit<
-    UseQueryOptions<ExtractFnReturnType<QueryFnType>>,
-'queryKey' | 'queryFn'
->;
+/**
+ * @template {(...args: any) => any} QueryFnType
+ * @typedef {Omit<import("react-query").UseQueryOptions<ExtractFnReturnType<QueryFnType>>, 'queryKey' | 'queryFn'>} QueryConfig
+ */
 
-export type MutationConfig<MutationFnType extends (...args: any) => any> = UseMutationOptions<
-    ExtractFnReturnType<MutationFnType>,
-    AxiosError,
-Parameters<MutationFnType>[0]
->;
+/**
+ * @template {(...args: any) => any} MutationFnType
+ * @typedef {import("react-query").UseMutationOptions<
+ *   ExtractFnReturnType<MutationFnType>,
+ *   import("axios").AxiosError,
+ *   Parameters<MutationFnType>[0]
+ * >} MutationConfig
+ */

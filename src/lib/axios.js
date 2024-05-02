@@ -1,10 +1,11 @@
-import Axios, { AxiosRequestConfig } from 'axios';
+import Axios from 'axios';
 
 import { API_URL } from '@/config';
 import { useNotificationStore } from '@/stores/notifications';
 import storage from '@/utils/storage';
 
-function authRequestInterceptor(config: AxiosRequestConfig) {
+/** @param {import('axios').AxiosRequestConfig} config */
+function authRequestInterceptor(config) {
   const token = storage.getToken();
   if (token) {
     config.headers.authorization = `${token}`;

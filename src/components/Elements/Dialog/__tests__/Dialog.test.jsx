@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useDisclosure } from '@/hooks/useDisclosure';
+import { useDisclosure } from '@/hooks/useDisclosure.js';
 import { rtlRender, screen, userEvent, waitFor } from '@/test/test-utils';
 
 import { Button } from '../../Button';

@@ -9,9 +9,9 @@ const { DiscussionsRoutes } = lazyImport(
     () => import('@/features/discussions'),
     'DiscussionsRoutes'
 );
-const { Dashboard } = lazyImport(() => import('@/features/misc'), 'Dashboard');
-const { Profile } = lazyImport(() => import('@/features/users'), 'Profile');
-const { Users } = lazyImport(() => import('@/features/users'), 'Users');
+const { Dashboard } = lazyImport(() => import('@/features/misc/index.js'), 'Dashboard');
+const { Profile } = lazyImport(() => import('@/features/users/index.js'), 'Profile');
+const { Users } = lazyImport(() => import('@/features/users/index.js'), 'Users');
 
 const App = () => {
     return (

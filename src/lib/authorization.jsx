@@ -1,24 +1,33 @@
-import * as React from 'react';
-
-import { Comment } from '@/features/comments';
-import { User } from '@/features/users';
+import React from 'react';
 
 import { useAuth } from './auth';
 
-export enum ROLES {
-  ADMIN = 'ADMIN',
-  USER = 'USER',
-}
+/**
+ * @readonly
+ * @enum {string}
+ */
+const ROLES = {
+  ADMIN: 'ADMIN',
+  USER: 'USER',
+};
 
-type RoleTypes = keyof typeof ROLES;
+/**
+ * @typedef {keyof typeof ROLES} RoleTypes
+ */
 
+/** @typedef {User} UserType */
+/** @typedef {CommentType} Comment */
+
+/**
+ * @type {Object.<string, (user: UserType, comment: Comment) => boolean>}
+ */
 export const POLICIES = {
-  'comment:delete': (user: User, comment: Comment) => {
-    if (user.role === 'ADMIN') {
+  'comment:delete': (user, comment) => {
+    if (user.role === ROLES.ADMIN) {
       return true;
     }
 
-    if (user.role === 'USER' && comment.authorId === user.id) {
+    if (user.role === ROLES.USER && comment.authorId === user.id) {
       return true;
     }
 
@@ -26,6 +35,9 @@ export const POLICIES = {
   },
 };
 
+/**
+ * @returns {{ checkAccess: (params: { allowedRoles?: RoleTypes[]; policyCheck?: boolean }) => boolean; role: string }}
+ */
 export const useAuthorization = () => {
   const { user } = useAuth();
 
@@ -33,40 +45,38 @@ export const useAuthorization = () => {
     throw Error('User does not exist!');
   }
 
-  const checkAccess = React.useCallback(
-    ({ allowedRoles }: { allowedRoles: RoleTypes[] }) => {
-      if (allowedRoles && allowedRoles.length > 0) {
-        return allowedRoles?.includes(user.role);
-      }
+  /**
+   * Checks if the user has access.
+   * @param {Object} params - Parameters object.
+   * @param {RoleTypes[]} [params.allowedRoles] - Array of allowed roles.
+   * @param {boolean} [params.policyCheck] - Boolean flag to perform policy check.
+   * @returns {boolean} - Indicates whether the user has access.
+   */
+  const checkAccess = ({ allowedRoles = [], policyCheck }) => {
+    if (allowedRoles.length > 0) {
+      return allowedRoles.includes(user.role);
+    }
 
-      return true;
-    },
-    [user.role]
-  );
+    return true;
+  };
 
   return { checkAccess, role: user.role };
 };
 
-type AuthorizationProps = {
-  forbiddenFallback?: React.ReactNode;
-  children: React.ReactNode;
-} & (
-  | {
-      allowedRoles: RoleTypes[];
-      policyCheck?: never;
-    }
-  | {
-      allowedRoles?: never;
-      policyCheck: boolean;
-    }
-);
+/**
+ * Props for the Authorization component.
+ * @typedef {Object} AuthorizationProps
+ * @property {React.ReactNode} [forbiddenFallback=null] - Fallback component to render when access is forbidden.
+ * @property {React.ReactNode} children - Child components to render.
+ * @property {RoleTypes[]} [allowedRoles] - Array of allowed roles.
+ * @property {boolean} [policyCheck] - Boolean flag to perform policy check.
+ */
 
-export const Authorization = ({
-  policyCheck,
-  allowedRoles,
-  forbiddenFallback = null,
-  children,
-}: AuthorizationProps) => {
+/**
+ * @param {AuthorizationProps} props
+ * @returns {JSX.Element}
+ */
+export const Authorization = ({ policyCheck, allowedRoles, forbiddenFallback = null, children }) => {
   const { checkAccess } = useAuthorization();
 
   let canAccess = false;

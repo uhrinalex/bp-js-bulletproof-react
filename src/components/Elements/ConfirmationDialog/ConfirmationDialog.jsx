@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Button } from '@/components/Elements/Button';
 import { Dialog, DialogTitle } from '@/components/Elements/Dialog/index.js';
-import { useDisclosure } from '@/hooks/useDisclosure';
+import { useDisclosure } from '@/hooks/useDisclosure.js';
 
 /**
  * Variants for button styling.

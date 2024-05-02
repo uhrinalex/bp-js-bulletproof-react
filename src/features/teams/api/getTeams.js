@@ -2,26 +2,25 @@ import { useQuery } from 'react-query';
 
 import { axios } from '@/lib/axios.js';
 
-/** @returns {Promise<Team[]>} */
+/** @type {() => Promise<Team[]>} */
 export const getTeams = () => {
   return axios.get('/teams');
 };
 
-/** @typedef {typeof getTeams} QueryFnType */
+/** @typedef {() => Promise<Team[]>} QueryFnType */
 
-/** @typedef {{
- * config?: import('@/lib/react-query.js').QueryConfig<QueryFnType>;
- * }} UseTeamsOptions
+/**
+ * @typedef {Object} UseTeamsOptions
+ * @property {import('@/lib/react-query.js').QueryConfig<QueryFnType>} [config]
  */
 
-/** @param {UseTeamsOptions} props */
-export const useTeams = ({ config = {} } = {}) => {
-  return useQuery({
+// TODO type this
+export const useTeams = ({ config = {} } = ({})) => {
+  return useQuery(/** @type {UseTeamsOptions} props */ {
     ...config,
     queryKey: ['teams'],
     queryFn: () => getTeams(),
   });
 };
 
-
-//TODO opisat v praci maybe?
+//TODO write about this in thesis

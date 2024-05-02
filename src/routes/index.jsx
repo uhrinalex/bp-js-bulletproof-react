@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 
-import { Landing } from '@/features/misc';
+import { Landing } from '@/features/misc/index.js';
 import { useAuth } from '@/lib/auth.jsx';
 
 import { protectedRoutes } from './protected';
