@@ -6,7 +6,7 @@ import { useAuth } from './auth';
  * @readonly
  * @enum {string}
  */
-const ROLES = {
+export const ROLES = {
   ADMIN: 'ADMIN',
   USER: 'USER',
 };

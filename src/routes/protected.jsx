@@ -6,7 +6,7 @@ import { MainLayout } from '@/components/Layout/index.js';
 import { lazyImport } from '@/utils/lazyImport.js';
 
 const { DiscussionsRoutes } = lazyImport(
-    () => import('@/features/discussions'),
+    () => import('@/features/discussions/index.js'),
     'DiscussionsRoutes'
 );
 const { Dashboard } = lazyImport(() => import('@/features/misc/index.js'), 'Dashboard');

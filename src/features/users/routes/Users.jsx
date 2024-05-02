@@ -1,5 +1,6 @@
 import { ContentLayout } from '@/components/Layout';
-import { Authorization, ROLES } from '@/lib/authorization';
+import { Authorization } from '@/lib/authorization';
+import { ROLES } from '@/lib/authorization';
 
 import { UsersList } from '../components/UsersList';
 
