@@ -54,7 +54,7 @@ export const discussionsHandlers = [
     }
   }),
 
-  rest.post<DiscussionBody>(`${API_URL}/discussions`, (req, res, ctx) => {
+  rest.post(`${API_URL}/discussions`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
       const data = req.body;
@@ -75,7 +75,7 @@ export const discussionsHandlers = [
     }
   }),
 
-  rest.patch<DiscussionBody>(`${API_URL}/discussions/:discussionId`, (req, res, ctx) => {
+  rest.patch(`${API_URL}/discussions/:discussionId`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
       const data = req.body;

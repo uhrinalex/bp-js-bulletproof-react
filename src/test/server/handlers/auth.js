@@ -23,7 +23,7 @@ import { authenticate, delayedResponse, hash, requireAuth } from '../utils';
  */
 
 export const authHandlers = [
-  rest.post<RegisterBody>(`${API_URL}/auth/register`, (req, res, ctx) => {
+  rest.post(`${API_URL}/auth/register`, (req, res, ctx) => {
     try {
       const userObject = req.body;
 
@@ -89,7 +89,7 @@ export const authHandlers = [
     }
   }),
 
-  rest.post<LoginBody>(`${API_URL}/auth/login`, (req, res, ctx) => {
+  rest.post(`${API_URL}/auth/login`, (req, res, ctx) => {
     try {
       const credentials = req.body;
       const result = authenticate(credentials);

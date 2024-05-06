@@ -32,7 +32,7 @@ export const commentsHandlers = [
     }
   }),
 
-  rest.post<CreateCommentBody>(`${API_URL}/comments`, (req, res, ctx) => {
+  rest.post(`${API_URL}/comments`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
       const data = req.body;

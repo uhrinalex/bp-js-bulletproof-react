@@ -33,7 +33,7 @@ export const usersHandlers = [
     }
   }),
 
-  rest.patch<ProfileBody>(`${API_URL}/users/profile`, (req, res, ctx) => {
+  rest.patch(`${API_URL}/users/profile`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
       const data = req.body;
