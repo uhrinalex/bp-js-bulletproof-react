@@ -2,7 +2,6 @@ import { Table, Spinner, Link } from '@/components/Elements';
 import { formatDate } from '@/utils/format';
 
 import { useDiscussions } from '../api/getDiscussions.js';
-import { Discussion } from '../types';
 
 import { DeleteDiscussion } from './DeleteDiscussion';
 
