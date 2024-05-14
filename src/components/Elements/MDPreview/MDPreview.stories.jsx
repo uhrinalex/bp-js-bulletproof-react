@@ -1,8 +1,7 @@
-import { Meta, Story } from '@storybook/react';
+import { MDPreview } from './MDPreview.jsx';
 
-import { MDPreview, MDPreviewProps } from './MDPreview.jsx';
-
-const meta: Meta = {
+/** @type {Meta} */
+const meta = {
   title: 'Components/Elements/MDPreview',
   component: MDPreview,
   parameters: {
@@ -12,8 +11,15 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<MDPreviewProps> = (props) => <MDPreview {...props} />;
+/** @typedef {import('./MDPreview').MDPreviewProps} MDPreviewPropsType */
 
+/**
+ * @param props {MDPreviewPropsType}
+ * @type {Story<MDPreviewPropsType>}
+ */
+const Template = (props) => <MDPreview {...props} />;
+
+/** @type {Story<MDPreviewPropsType>} */
 export const Default = Template.bind({});
 Default.args = {
   value: `## Hello World`,

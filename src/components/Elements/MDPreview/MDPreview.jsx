@@ -3,11 +3,10 @@ import marked from 'marked';
 
 const DOMPurify = createDOMPurify(window);
 
-export type MDPreviewProps = {
-  value: string;
-};
+/** @typedef {{ value: string }} MDPreviewProps */
 
-export const MDPreview = ({ value = '' }: MDPreviewProps) => {
+/** @param props {MDPreviewProps} */
+export const MDPreview = ({ value = '' }) => {
   return (
     <div
       className="p-2 w-full prose prose-indigo"

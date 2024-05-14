@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import omit from 'lodash/omit';
-import { RestRequest, createResponseComposition, context } from 'msw';
+import { createResponseComposition, context } from 'msw';
 
 import { JWT_SECRET } from '@/config';
 
@@ -46,7 +46,7 @@ export function authenticate({ email, password }) {
   throw error;
 }
 
-/** @param {RestRequest} request */
+/** @param {import('msw').RestRequest} request */
 export function requireAuth(request) {
   try {
     const encodedToken = request.headers.get('authorization');

@@ -30,7 +30,7 @@ export const useUpdateDiscussion = ({ config } = {}) => {
     onMutate: async (/** @type {any} */updatingDiscussion) => {
       await queryClient.cancelQueries(['discussion', updatingDiscussion?.discussionId]);
 
-      const previousDiscussion = queryClient.getQueryData<Discussion>([
+      const previousDiscussion = queryClient.getQueryData([
         'discussion',
         updatingDiscussion?.discussionId,
       ]);

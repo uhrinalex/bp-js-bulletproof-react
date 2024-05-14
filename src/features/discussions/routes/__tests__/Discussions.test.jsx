@@ -9,7 +9,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  (console.error as jest.Mock).mockRestore();
+  (/** @type {jest.Mock} */(console.error)).mockRestore();
 });
 
 test('should create, render and delete discussions', async () => {

@@ -41,6 +41,7 @@
     "zustand": "^3.5.2"
   },
   "scripts": {
+    "diagnostics": "tsc --diagnostics",
     "start": "craco start",
     "start:cli": "cross-env BROWSER=none craco start",
     "build": "craco build",

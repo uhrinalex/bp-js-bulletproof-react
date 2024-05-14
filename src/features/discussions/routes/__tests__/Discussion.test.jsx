@@ -21,7 +21,7 @@ const renderDiscussion = async () => {
   const fakeUser = await createUser();
   const fakeDiscussion = await createDiscussion({ teamId: fakeUser.teamId });
 
-  (useMockParams as jest.Mock).mockImplementation(() => ({
+  (/** @type {jest.Mock} */(useMockParams)).mockImplementation(() => ({
     discussionId: fakeDiscussion.id,
   }));
 
