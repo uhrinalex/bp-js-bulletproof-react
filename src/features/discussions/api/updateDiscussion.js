@@ -51,7 +51,7 @@ export const useUpdateDiscussion = ({ config } = {}) => {
         );
       }
     },
-    onSuccess: (data) => {
+    onSuccess: (/** @type {Discussion} */data) => {
       queryClient.refetchQueries(['discussion', data.id]);
       addNotification({
         type: 'success',
