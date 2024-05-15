@@ -57,7 +57,7 @@ export const discussionsHandlers = [
   rest.post(`${API_URL}/discussions`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
-      const data = req.body;
+      const data = /** @type {DiscussionBody} */(req.body);
       requireAdmin(user);
       const result = db.discussion.create({
         teamId: user.teamId,
@@ -78,7 +78,7 @@ export const discussionsHandlers = [
   rest.patch(`${API_URL}/discussions/:discussionId`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
-      const data = req.body;
+      const data = /** @type {DiscussionBody} */(req.body);
       const { discussionId } = req.params;
       requireAdmin(user);
       const result = db.discussion.update({

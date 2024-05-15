@@ -25,7 +25,7 @@ import { useAuthorization, ROLES } from '@/lib/authorization.jsx';
 const SideNavigation = () => {
   const { checkAccess } = useAuthorization();
 
-  const navigation = /** @type {SideNavigationItem[]} */[
+  const navigation = /** @type {SideNavigationItem[]} */([
     { name: 'Dashboard', to: '.', icon: HomeIcon },
     { name: 'Discussions', to: './discussions', icon: FolderIcon },
     checkAccess({ allowedRoles: [ROLES.ADMIN] }) && {
@@ -33,7 +33,7 @@ const SideNavigation = () => {
       to: './users',
       icon: UsersIcon,
     },
-  ].filter(Boolean);
+  ]).filter(Boolean);
 
   return (
     <>

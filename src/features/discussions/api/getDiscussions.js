@@ -9,7 +9,7 @@ export const getDiscussions = () => {
 
 /** @typedef {typeof getDiscussions} QueryFnType */
 
-/** @typedef {{ config?: QueryConfig<QueryFnType> }} UseDiscussionsOptions */
+/** @typedef {{ config?: import('@/lib/react-query').QueryConfig<QueryFnType> }} UseDiscussionsOptions */
 
 /** @param {UseDiscussionsOptions} props */
 export const useDiscussions = ({ config } = {}) => {

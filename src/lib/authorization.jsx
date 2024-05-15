@@ -4,6 +4,7 @@ import { useAuth } from './auth';
 
 /**
  * @readonly
+ * @type {{ADMIN: 'ADMIN', USER: 'USER'}}
  * @enum {string}
  */
 export const ROLES = {

@@ -10,13 +10,11 @@ export const getDiscussion = ({ discussionId }) => {
   return axios.get(`/discussions/${discussionId}`);
 };
 
-// type QueryFnType = typeof getDiscussion;
-
 /** @typedef {typeof getDiscussion} QueryFnType */
 
 /** @typedef {{
  * discussionId: string;
- * config?: QueryConfig<QueryFnType>;
+ * config?: import('@/lib/react-query').QueryConfig<QueryFnType>;
  * }} UseDiscussionOptions */
 
 /** @param {UseDiscussionOptions} options */

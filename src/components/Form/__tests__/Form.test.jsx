@@ -6,25 +6,16 @@ import { rtlRender, screen, waitFor, userEvent } from '@/test/test-utils.js';
 import { Form } from '../Form';
 import { InputField } from '../InputField';
 
-/**
- * Typ testovacích dát.
- * @typedef {Object} TestData
- * @property {string} title - Názov
- */
+const testData = {
+  title: 'Hello World',
+};
 
-/**
- * Schéma pre validáciu testovacích dát.
- * @type {import('zod').ZodObject<{ title: import('zod').ZodString }>}
- */
+/** @type {import('zod').ZodObject<{ title: import('zod').ZodString }>} */
 const schema = z.object({
   title: z.string().min(1, 'Required'),
 });
 
-/**
- * Testuje zobrazenie a odoslanie základného komponentu Form.
- * @param {import('zod').Infer<typeof schema>} testData - Testovacie dáta.
- */
-test('should render and submit a basic Form component', async (testData) => {
+test('should render and submit a basic Form component', async () => {
   const handleSubmit = jest.fn();
 
   rtlRender(
@@ -53,9 +44,6 @@ test('should render and submit a basic Form component', async (testData) => {
   await waitFor(() => expect(handleSubmit).toHaveBeenCalledWith(testData, expect.anything()));
 });
 
-/**
- * Testuje, že odoslanie zlyhá, ak validácia zlyhá.
- */
 test('should fail submission if validation fails', async () => {
   const handleSubmit = jest.fn();
 

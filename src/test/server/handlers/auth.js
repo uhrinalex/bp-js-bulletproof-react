@@ -25,7 +25,7 @@ import { authenticate, delayedResponse, hash, requireAuth } from '../utils';
 export const authHandlers = [
   rest.post(`${API_URL}/auth/register`, (req, res, ctx) => {
     try {
-      const userObject = req.body;
+      const userObject = /** @type {RegisterBody} */(req.body);
 
       const existingUser = db.user.findFirst({
         where: {
@@ -91,7 +91,7 @@ export const authHandlers = [
 
   rest.post(`${API_URL}/auth/login`, (req, res, ctx) => {
     try {
-      const credentials = req.body;
+      const credentials = /** @type {LoginBody} */(req.body);
       const result = authenticate(credentials);
       return delayedResponse(ctx.json(result));
     } catch (/** @type {any} */error) {

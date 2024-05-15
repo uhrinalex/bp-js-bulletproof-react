@@ -36,7 +36,7 @@ export const usersHandlers = [
   rest.patch(`${API_URL}/users/profile`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
-      const data = req.body;
+      const data = /** @type {ProfileBody} */(req.body);
       const result = db.user.update({
         where: {
           id: {

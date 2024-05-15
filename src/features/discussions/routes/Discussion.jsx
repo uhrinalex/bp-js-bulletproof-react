@@ -10,7 +10,7 @@ import { useDiscussion } from '../api/getDiscussion.js';
 import { UpdateDiscussion } from '../components/UpdateDiscussion.jsx';
 
 export const Discussion = () => {
-  const { discussionId } = useParams();
+  const { discussionId } = /** @type {{discussionId: string}} */(useParams());
   const discussionQuery = useDiscussion({ discussionId });
 
   if (discussionQuery.isLoading) {

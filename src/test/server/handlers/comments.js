@@ -35,7 +35,7 @@ export const commentsHandlers = [
   rest.post(`${API_URL}/comments`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
-      const data = req.body;
+      const data = /** @type {CreateCommentBody} */(req.body);
       const result = db.comment.create({
         authorId: user.id,
         id: nanoid(),
