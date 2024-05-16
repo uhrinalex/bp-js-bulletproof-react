@@ -14,9 +14,14 @@ const schema = z.object({
   bio: z.string(),
 });
 
+/**
+ * @typedef {import('react-query').UseMutationResult<import('axios').AxiosResponse<any>, import('axios').AxiosError<any>, import('../api/updateProfile').UpdateProfileDTO, unknown>} useUpdateProfileType
+ */
+
+/** @returns {JSX.Element} */
 export const UpdateProfile = () => {
   const { user } = useAuth();
-  const updateProfileMutation = useUpdateProfile();
+  const updateProfileMutation = /** @type { useUpdateProfileType } */(useUpdateProfile());
 
   return (
     <FormDrawer
@@ -41,7 +46,8 @@ export const UpdateProfile = () => {
       <Form
         id="update-profile"
         onSubmit={async (values) => {
-          await updateProfileMutation.mutateAsync({ data: values });
+          const param = /** @type {import('../api/updateProfile').UpdateProfileDTO} */({ data: values });
+          await updateProfileMutation.mutateAsync(param);
         }}
         options={{
           defaultValues: {

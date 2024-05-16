@@ -21,10 +21,12 @@ import * as React from 'react';
  * @property {function({ entry: Entry }): React.ReactElement} [Cell]
  */
 
+/** @typedef {{ id: string }} ExtendsIdObject */
+
 /**
  * @param {TableProps<Entry>} props
- * @returns {React.ReactElement}
- * @template Entry
+ * @returns {JSX.Element}
+ * @template {ExtendsIdObject} Entry
  */
 export const Table = ({ data, columns }) => {
   if (!data?.length) {
@@ -62,7 +64,7 @@ export const Table = ({ data, columns }) => {
                         key={title + columnIndex}
                         className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap"
                       >
-                        {Cell ? <Cell entry={entry} /> : entry[field]}
+                        {Cell ? <Cell entry={entry} /> : /** @type {JSX.Element} */(entry[field])}
                       </td>
                     ))}
                   </tr>

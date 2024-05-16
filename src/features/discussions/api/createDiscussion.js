@@ -22,12 +22,13 @@ export const createDiscussion = ({ data }) => {
   return axios.post(`/discussions`, data);
 };
 
-/** @typedef {{ config?: MutationConfig<typeof createDiscussion> }} UseCreateDiscussionOptions */
+/** @typedef {{ config?: import('@/lib/react-query').MutationConfig<typeof createDiscussion> }} UseCreateDiscussionOptions */
 
 /** @param {UseCreateDiscussionOptions} props */
 export const useCreateDiscussion = ({ config } = {}) => {
   const { addNotification } = useNotificationStore();
   return useMutation({
+    /** @param {CreateDiscussionDTO} newDiscussion */
     onMutate: async (newDiscussion) => {
       await queryClient.cancelQueries('discussions');
 

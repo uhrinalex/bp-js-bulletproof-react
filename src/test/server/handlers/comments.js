@@ -7,7 +7,7 @@ import { db, persistDb } from '../db';
 import { requireAuth, delayedResponse } from '../utils';
 
 /** @typedef {{
- * id: string;
+ * body: string;
  * discussionId: string;
  * }} CreateCommentBody */
 

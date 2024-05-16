@@ -20,7 +20,7 @@ export const updateDiscussion = ({data, discussionId}) => {
   return axios.patch(`/discussions/${discussionId}`, data);
 };
 
-/** @typedef {{ config?: MutationConfig<typeof updateDiscussion> }} UseUpdateDiscussionOptions */
+/** @typedef {{ config?: import('@/lib/react-query').MutationConfig<typeof updateDiscussion> }} UseUpdateDiscussionOptions */
 
 /** @param {UseUpdateDiscussionOptions} props */
 export const useUpdateDiscussion = ({ config } = {}) => {
@@ -30,6 +30,7 @@ export const useUpdateDiscussion = ({ config } = {}) => {
     onMutate: async (/** @type {any} */updatingDiscussion) => {
       await queryClient.cancelQueries(['discussion', updatingDiscussion?.discussionId]);
 
+      /** @type {Discussion | undefined} */
       const previousDiscussion = queryClient.getQueryData([
         'discussion',
         updatingDiscussion?.discussionId,
