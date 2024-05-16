@@ -45,7 +45,8 @@ export const UpdateDiscussion = ({ discussionId }) => {
         <Form
           id="update-discussion"
           onSubmit={async (values) => {
-            await updateDiscussionMutation.mutateAsync({ data: values, discussionId });
+            const param = /** @type {import('../api/updateDiscussion.js').UpdateDiscussionDTO} */({ data: values, discussionId });
+            await updateDiscussionMutation.mutateAsync(param);
           }}
           options={{
             defaultValues: {

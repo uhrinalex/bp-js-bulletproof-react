@@ -13,7 +13,7 @@ const schema = z.object({
 });
 
 export const CreateDiscussion = () => {
-  const createDiscussionMutation = useCreateDiscussion();
+  const createDiscussionMutation = /** @type{ import('react-query').UseMutationResult<Discussion, import('axios').AxiosError<any>, import('../api/createDiscussion.js').CreateDiscussionDTO, any>} */(useCreateDiscussion());
 
   return (
     <Authorization allowedRoles={[ROLES.ADMIN]}>
@@ -39,25 +39,27 @@ export const CreateDiscussion = () => {
         <Form
           id="create-discussion"
           onSubmit={async (values) => {
-            await createDiscussionMutation.mutateAsync({ data: values });
+            const param = /** @type {import('../api/createDiscussion.js').CreateDiscussionDTO} */({ data: values });
+            await createDiscussionMutation.mutateAsync(param);
           }}
           schema={schema}
         >
           {({ register, formState }) => (
-            <>
-              <InputField
-                label="Title"
-                error={formState.errors['title']}
-                registration={register('title')}
-              />
+              <>
+                <InputField
+                  label="Title"
+                  error={/** @type {FieldError | undefined} */(formState.errors['title'])}
+                  registration={register('title')}
+                />
 
-              <TextAreaField
-                label="Body"
-                error={formState.errors['body']}
-                registration={register('body')}
-              />
-            </>
-          )}
+                <TextAreaField
+                  label="Body"
+                  error={/** @type {FieldError | undefined} */(formState.errors['body'])}
+                  registration={register('body')}
+                />
+              </>
+            )
+          }
         </Form>
       </FormDrawer>
     </Authorization>

@@ -9,7 +9,7 @@ export const deleteDiscussion = ({ discussionId }) => {
   return axios.delete(`/discussions/${discussionId}`);
 };
 
-/** @typedef {{ config?: MutationConfig<typeof deleteDiscussion> }} UseDeleteDiscussionOptions */
+/** @typedef {{ config?: import('@/lib/react-query').MutationConfig<typeof deleteDiscussion> }} UseDeleteDiscussionOptions */
 
 /** @param {UseDeleteDiscussionOptions} props */
 export const useDeleteDiscussion = ({ config } = {}) => {
